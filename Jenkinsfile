@@ -7,12 +7,10 @@ environment {
     stages {
         stage('Clean') {
             steps {
-                sh ''''
+                sh '''
                 echo "Cleaning up npm environment..."
-                rm -rf node_modules
                 npm cache clean --force
                 '''
-            
             }
         }
         stage('Tests') {
