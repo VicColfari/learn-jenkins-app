@@ -54,8 +54,10 @@ pipeline {
         }
     }
     post {
+        /*
         always {
-           junit 'jest-results/junit.xml'
+           junit 'test-results/junit.xml'
+           */
         }
     }
 }
