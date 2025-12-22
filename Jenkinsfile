@@ -5,26 +5,16 @@ environment {
     NETLIFY_SITE_ID='b61f91b6-ede6-4ab7-9d62-f6cdd408fa3a'
 }
     stages {
-        /*
-        stage('Build') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
+        stage('Clean') {
             steps {
-                sh '''
-                ls -la
-                node --version
-                npm --version
-                npm ci
-                npm run build
+                sh ''''
+                echo "Cleaning up npm environment..."
+                rm -rf node_modules
+                npm cache clean --force
                 '''
             
             }
         }
-        */
         stage('Tests') {
             parallel{
                 stage ('Unit test') {
@@ -41,14 +31,11 @@ environment {
                         '''
                     }
                      post {
-        
                          always {
                              junit 'jest-results/junit.xml'
                          }
                       }
                    }
-
-
                  stage ('E2E') {
                     agent {
                         docker {
