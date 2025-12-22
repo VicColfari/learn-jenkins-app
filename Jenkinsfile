@@ -5,6 +5,7 @@ environment {
     NETLIFY_SITE_ID='b61f91b6-ede6-4ab7-9d62-f6cdd408fa3a'
 }
     stages {
+        /*
         stage('Clean') {
             steps {
                 sh '''
@@ -13,6 +14,7 @@ environment {
                 '''
             }
         }
+        */
         stage('Tests') {
             parallel{
                 stage ('Unit test') {
