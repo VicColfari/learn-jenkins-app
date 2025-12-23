@@ -81,6 +81,7 @@ pipeline {
                 docker {
                     image 'node:18-alpine'
                     reuseNode true
+                    RUN apk add bash
                 }
             }
             steps {
