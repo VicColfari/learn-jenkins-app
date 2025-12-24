@@ -8,8 +8,20 @@ pipeline {
     }
 
     stages {
-
-        stage('Docker') {
+        stage('AWS') {
+            agent{
+                docker {
+                    image 'aws-cli:latest'
+                    args "--entrypoint=''"
+                }
+            }
+            steps {
+                sh '''
+                aws --version                
+                '''
+            }
+        }
+        stage('Docker_Playwright') {
             steps {
               sh 'docker build -t my-playwright .'
                 }
